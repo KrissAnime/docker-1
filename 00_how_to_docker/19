@@ -1,0 +1,8 @@
+docker run -it \
+--mount type=bind,source=/home/docker/HOME,target=/root \
+--name Abathur \
+-p 192.168.99.100:3000:3000 \
+python:2-slim
+
+pip install flask --user
+pip install flask_restful --user
