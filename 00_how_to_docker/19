@@ -16,7 +16,7 @@ docker run -it --rm \
 --mount type=bind,source=/home/docker/HOME,target=/root \
 --name Abathur \
 --entrypoint /bin/bash \
--p 192.168.99.100:3000:3000 \
+-p $(docker-machine ip Char):3000:3000 \
 python:2-slim
 
 cd root
@@ -25,4 +25,4 @@ ls
 pip install flask --user
 pip install flask_restful --user
 python -m flask run -p 3000 -h 0.0.0.0
-
+exit

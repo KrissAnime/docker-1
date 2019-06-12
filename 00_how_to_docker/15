@@ -1,4 +1,6 @@
-docker run --detach \
+docker run -d \
 --name roach-warden \
---link spawning-pool:mysql \
--p 192.168.99.100:8081:80 phpmyadmin sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
+--link spawning-pool:db \
+-e MYSQL_ROOT_PASSWORD=Kerrigan \
+-e MYSQL_DATABASE=zerglings \
+-p $(docker-machine ip Char):8081:80 phpmyadmin/phpmyadmin

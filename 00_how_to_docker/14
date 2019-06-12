@@ -1,4 +1,4 @@
 docker run --detach \
 --name lair \
 --link spawning-pool \
--p 192.168.99.100:8080:80 wordpress
+-p $(docker-machine ip Char):8080:80 wordpress
