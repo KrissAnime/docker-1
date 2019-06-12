@@ -1,8 +1,28 @@
-docker run -it \
+docker-machine ssh Char
+mkdir HOME
+cd HOME
+echo 'from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+app.run(host="0.0.0.0")' >> app.py
+
+exit
+
+docker run -it --rm \
 --mount type=bind,source=/home/docker/HOME,target=/root \
 --name Abathur \
+--entrypoint /bin/bash \
 -p 192.168.99.100:3000:3000 \
 python:2-slim
 
+cd root
+ls
+
 pip install flask --user
 pip install flask_restful --user
+python -m flask run -p 3000 -h 0.0.0.0
+
