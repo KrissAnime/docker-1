@@ -1,6 +1,4 @@
 docker run -d \
 --name roach-warden \
 --link spawning-pool:db \
--e MYSQL_ROOT_PASSWORD=Kerrigan \
--e MYSQL_DATABASE=zerglings \
--p $(docker-machine ip Char):8081:80 phpmyadmin/phpmyadmin
+-p 8081:80 phpmyadmin/phpmyadmin

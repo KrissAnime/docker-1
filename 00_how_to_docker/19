@@ -16,7 +16,7 @@ docker run -it --rm \
 --mount type=bind,source=/home/docker/HOME,target=/root \
 --name Abathur \
 --entrypoint /bin/bash \
--p $(docker-machine ip Char):3000:3000 \
+-p 3000:3000 \
 python:2-slim
 
 cd root
