@@ -6,13 +6,17 @@ RUN apt-get update  && apt-get install -y nodejs rails
 
 RUN mkdir /ruby_app
 
-COPY /ruby-container/Gemfile /ruby_app/Gemfile
+COPY Gemfile /ruby_app/Gemfile
 
-COPY /ruby-container/Gemfile.lock /ruby_app/Gemfile.lock
+COPY Gemfile.lock /ruby_app/Gemfile.lock
 
 WORKDIR /ruby_app
 
-RUN rails new /hello_world --force --skip-namespace
+# RUN ls
+
+RUN gem install rake && bundle install && rails new /hello_world --force --skip-namespace
+
+# RUN ls && ls /hello_world
 
 WORKDIR /hello_world
 
