@@ -1,11 +1,5 @@
-FROM ruby:latest AS ft-rails
+FROM ft-rails:on-build
 
-COPY CI_Jenkins_RubyonRails /opt/app/CI_Jenkins_RubyonRails
+EXPOSE 3000
 
-WORKDIR /opt/app/CI_Jenkins_RubyonRails
-
-RUN ls -l
-
-RUN cat Gemfile package.json
-
-# RUN gem install
+CMD ["rails", "s", "-b", "0.0.0.0", "-p", "3000"]
